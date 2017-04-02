@@ -1,24 +1,20 @@
 package com.example.user.work4;
 
-/**
- * Created by user on 2017-03-30.
- */
-
 public class Food {
     private String name;
-    private int prize;
+    private int price;
 
-    public Food(String name, int prize) {
+    public Food(String name, int price) {
         this.name = name;
-        this.prize = prize;
+        this.price = price;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getPrize() {
-        return prize;
+    public int getPrice() {
+        return price;
     }
 
     @Override

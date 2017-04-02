@@ -9,13 +9,9 @@ import android.widget.TextView;
 
 import java.util.List;
 
-/**
- * Created by user on 2017-04-02.
- */
-
 public class TableAdapter extends BaseAdapter {
 
-    List<Table> tableList;
+    private List<Table> tableList;
     final int layout;
     final Context context;
     LayoutInflater layoutInflater;
@@ -26,7 +22,7 @@ public class TableAdapter extends BaseAdapter {
         this.layout = layout;
         this.context = context;
         layoutInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-    }
+}
 
     @Override
     public int getCount() {
@@ -43,12 +39,9 @@ public class TableAdapter extends BaseAdapter {
         return position;
     }
 
-    public void addListItem(Table table){
-        tableList.add(table);
-    }
-
-    public Table removeListItem(int index){
-        return tableList.remove(index);
+    public void clearTableList(){
+        tableList = DB.tableDB();
+        notifyDataSetChanged();
     }
 
     @Override

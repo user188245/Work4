@@ -1,9 +1,5 @@
 package com.example.user.work4;
 
-/**
- * Created by user on 2017-03-30.
- */
-
 public final class Dish {
     private Food food;
     private int index;
@@ -17,9 +13,7 @@ public final class Dish {
 
     @Override
     public String toString() {
-        return "# " + index + " :" + food +
-                ", (" + num +
-                "개)";
+        return String.format("#%-3d : %-10s %d개/판매가 : %d원",index,food,num,price());
     }
 
     public int getIndex() {
@@ -38,8 +32,8 @@ public final class Dish {
         return food.getName();
     }
 
-    public int prize(){
-        return food.getPrize();
+    public int price(){
+        return food.getPrice();
     }
 
 

@@ -6,33 +6,33 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.AdapterView;
+import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
-/**
- * Created by user on 2017-03-30.
- */
-
 public class Fragment1 extends Fragment{
     ListView listView;
+    TableAdapter tableAdapter;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment1,container,false);
-        ArrayList<Table> tableList = DB.tableList();
         listView = (ListView)view.findViewById(R.id.listView);
-        TableAdapter tableAdapter = new TableAdapter(tableList,R.layout.fragment1,getActivity().getApplicationContext());
+        tableAdapter = new TableAdapter(DB.tableDB(),R.layout.fragment1,getActivity().getApplicationContext());
         listView.setAdapter(tableAdapter);
+        listView.setOnItemClickListener(new ItemListener());
         return view;
     }
 
-    private class ButtonListener implements View.OnClickListener{
+    class ItemListener implements AdapterView.OnItemClickListener{
         @Override
-        public void onClick(View v) {
-            Toast.makeText(getActivity().getApplicationContext(),"프레그먼트 1",Toast.LENGTH_SHORT).show();
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            Fragment2 fragment2 = (Fragment2)getFragmentManager().findFragmentById(R.id.fragment2);
+            fragment2.setSelectedTable(position, (Table)tableAdapter.getItem(position));
         }
     }
+
+
 }

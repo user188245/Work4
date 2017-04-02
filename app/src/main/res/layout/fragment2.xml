@@ -1,12 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="테이블 명"
+            android:layout_margin="5dp"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:layout_weight="1">
+        </TextView>
 
-    <Button
-        android:id="@+id/button"
+        <TextView
+            android:id="@+id/tableName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:textSize="15dp"
+            android:textColor="#8F0000ff"
+            android:layout_weight="1">
+        </TextView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="입장 시간"
+            android:layout_margin="5dp"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:layout_weight="1">
+        </TextView>
+
+        <TextView
+            android:id="@+id/tableTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:textSize="15dp"
+            android:textColor="#8F0000ff"
+            android:layout_weight="1">
+        </TextView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="맴버쉽 카드"
+            android:layout_margin="5dp"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:layout_weight="1">
+        </TextView>
+
+        <TextView
+            android:id="@+id/tableCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:textSize="15dp"
+            android:textColor="#8F0000ff"
+            android:layout_weight="1">
+        </TextView>
+    </LinearLayout>
+    <TextView
+        android:text="주문리스트(스크롤가능)"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Fragment2 테스트"/>
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="3dp"
+        android:textSize="12dp"/>
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_weight="3"
+            android:layout_height="50dp">
+
+            <LinearLayout
+                android:id="@+id/dishLayout"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="vertical"
+                android:layout_margin="10dp"
+                android:background="#300030ff">
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:background="#100000ff">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="총 가격"
+            android:layout_margin="5dp"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:textColor="#80ff0000"
+            android:layout_weight="1">
+        </TextView>
+
+        <TextView
+            android:id="@+id/tablePrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:textSize="15dp"
+            android:textColor="#8F0000ff"
+            android:layout_weight="1">
+        </TextView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:background="#20ff0000"
+        android:layout_margin="10dp">
+            <Button
+                android:id="@+id/buttonOrder"
+                android:text="새 주문"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="5dp"/>
+
+            <Button
+                android:id="@+id/buttonModify"
+                android:text="정보수정"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="5dp"/>
+
+            <Button
+                android:id="@+id/buttonReset"
+                android:text="초기화"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="5dp"/>
+    </LinearLayout>
+
 </LinearLayout>

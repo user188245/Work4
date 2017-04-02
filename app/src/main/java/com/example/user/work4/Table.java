@@ -2,31 +2,48 @@ package com.example.user.work4;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-
-/**
- * Created by user on 2017-03-30.
- */
+import java.util.List;
 
 public class Table {
     private String name;
-    private Calendar reservtime;
+    private Calendar reservTime;
     private boolean isEmpty = true;
-    ArrayList<Dish> dishList;
+    private ArrayList<Dish> dishList;
     private CardType cardType;
-    private long totalPrize;
+    private long totalPrice;
+
+    public String getName() {
+        return name;
+    }
+
+    public Calendar getReservTime() {
+        return reservTime;
+    }
+
+    public ArrayList<Dish> getDishList() {
+        return dishList;
+    }
+
+    public String cardType() {
+        return cardType.name();
+    }
+
+    public long getTotalPrice() {
+        return totalPrice;
+    }
 
     public Table(String name){
         this.name = name;
-        dishList = DB.dishList();
-        totalPrize = 0;
+        dishList = DB.dishDB();
+        totalPrice = 0;
     }
 
     public void setReserv(ArrayList<Dish> dishList,CardType cardType, int year,int month, int day, int hour, int minute){
-        this.reservtime = Calendar.getInstance();
-        reservtime.set(year, month, day, hour, minute);
+        this.reservTime = Calendar.getInstance();
+        reservTime.set(year, month, day, hour, minute);
         this.dishList = dishList;
         this.cardType = cardType;
-        this.totalPrize = getTotalPrize();
+        this.totalPrice = getTotalPrize();
         isEmpty = false;
     }
 
@@ -34,11 +51,15 @@ public class Table {
         isEmpty = true;
     }
 
-    public String getReservTime(){
+    public String reservTimeToString(){
         if(isEmpty()){
             return "unreserved";
         }else{
-            return reservtime.toString();
+            return reservTime.get(Calendar.YEAR) +"/"+
+                    reservTime.get(Calendar.MONTH)+"/"+
+                    reservTime.get(Calendar.DATE)+", "+
+                    reservTime.get(Calendar.HOUR_OF_DAY)+":"+
+                    reservTime.get(Calendar.MINUTE);
         }
     }
 
@@ -55,7 +76,7 @@ public class Table {
                     break;
             }
             for(Dish dish : dishList){
-                totalPrize += discountVal * dish.getNum() * dish.prize();
+                totalPrize += discountVal * dish.getNum() * dish.price();
             }
             return totalPrize;
         }catch(RuntimeException e){
@@ -68,7 +89,7 @@ public class Table {
         return isEmpty;
     }
 
-    private enum CardType{
+    public enum CardType{
         None,
         Membership,
         VIP
